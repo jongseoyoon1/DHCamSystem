@@ -1,0 +1,293 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 effective-4.1.50 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name LCAddDeviceModule
+import AVFoundation
+import AudioToolbox
+import CoreLocation
+import LCBaseModule.DHModule
+import DHScanner
+import Foundation
+@_exported import LCAddDeviceModule
+import LCBaseModule
+import MediaPlayer
+import NetworkExtension
+import SnapKit
+import Swift
+import UIKit
+import _Concurrency
+@objc public enum DHNetConfigMode : Swift.Int {
+  case wifi
+  case wired
+  case softAp
+  case simCard
+  case qrCode
+  case local
+  case nbIoT
+  case ble
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum DHNetConfigStrategy : Swift.Int {
+  case defalult
+  case fromOMS
+  case fromNC
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum DHDeviceAccessType : Swift.Int {
+  case p2p
+  case easy4ip
+  case paas
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum DHNetConnectType : Swift.Int {
+  case none
+  case soundWave
+  case soundWaveV2
+  case softAp
+  case buleTooth
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct DHAddConfigTimeout {
+}
+@_inheritsConvenienceInitializers @objc public class DHAddDeviceManager : ObjectiveC.NSObject {
+  @objc public static let sharedInstance: LCAddDeviceModule.DHAddDeviceManager
+  @objc public var deviceId: Swift.String
+  @objc public var deviceModel: Swift.String
+  @objc public var deviceQRCodeModel: Swift.String?
+  @objc public var deviceMarketModel: Swift.String?
+  @objc public var imeiCode: Swift.String
+  @objc public var regCode: Swift.String?
+  @objc public var ncCode: Swift.String?
+  @objc public var netConfigMode: LCAddDeviceModule.DHNetConfigMode
+  @objc public var isEnterByQrcode: Swift.Bool
+  @objc public var ncType: LCAddDeviceModule.DHNetConnectType
+  public var supportConfigModes: [LCAddDeviceModule.DHNetConfigMode]
+  public var netConfigStrategy: LCAddDeviceModule.DHNetConfigStrategy
+  public var isSupport5GWifi: Swift.Bool
+  public var isSupportSoundWave: Swift.Bool
+  public var isOnline: Swift.Bool
+  public var isAccessory: Swift.Bool
+  public var gatewayId: Swift.String
+  public var gatewayIdNeedReset: Swift.Bool
+  public var accessType: LCAddDeviceModule.DHDeviceAccessType
+  public var brand: Swift.String
+  public var channelNum: Swift.String
+  public var isContainInitializeSearch: Swift.Bool
+  public var isContainNetConfig: Swift.Bool
+  @objc public var initialPassword: Swift.String
+  @objc public var wifiSSID: Swift.String?
+  @objc public var wifiPassword: Swift.String?
+  @objc public var isEntryFromWifiConfig: Swift.Bool
+  @objc public var abilities: Swift.String
+  @objc override dynamic public init()
+  @objc public func isDeviceFindInLocalNetwork() -> Swift.Bool
+  public func getLocalDevice() -> LCAddDeviceModule.ISearchDeviceNetInfo?
+  public func reset()
+  public func getDeviceInfo(deviceId: Swift.String, qrModel: Swift.String?, ncCode: Swift.String?, marketModel: Swift.String?, imeiCode: Swift.String?, success: @escaping (LCNetworkModule.DHUserDeviceBindInfo, Swift.Bool) -> (), failure: @escaping (LCBaseModule.LCError) -> ())
+  public func setup(deviceInfo: LCNetworkModule.DHUserDeviceBindInfo)
+  public func getDeviceStatus(success: @escaping (LCNetworkModule.DHUserDeviceBindInfo) -> (), failure: @escaping (LCBaseModule.LCError) -> ())
+  public func stopGetDeviceStatus()
+  public func bindDevice(devicePassword: Swift.String, code: Swift.String? = nil, deviceKey: Swift.String? = nil, success: @escaping () -> (), failure: @escaping (LCBaseModule.LCError) -> ())
+  public func addPlicy(success: @escaping () -> (), failure: @escaping (LCBaseModule.LCError) -> ())
+  public func getDeviceInfoAfterBind(success: @escaping (LCNetworkModule.DHBindDeviceSuccess) -> (), failure: @escaping (LCBaseModule.LCError) -> ())
+  public func getIntroductionParser() -> LCAddDeviceModule.DHIntroductionParser?
+  public func isIntroductionUpdating() -> Swift.Bool
+  public func postUpdateDeviceNotification(isWifiConfig: Swift.Bool = false)
+  @objc deinit
+}
+extension LCAddDeviceModule.DHAddDeviceManager {
+  public func autoConnectHotSpot(wifiName ssid: Swift.String?, password: Swift.String?, completion: @escaping ((Swift.Bool) -> Swift.Void))
+}
+public enum StartAddType : Swift.String {
+  case QRCode
+  case SN
+  case NetworkConfig
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum ResType : Swift.String {
+  case Fail
+  case Success
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum DescType : Swift.String {
+  case Success
+  case ParseQRCodeFail
+  case ConnectCloudTimeOut
+  case FindDevFail
+  case ConnectAPFail
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum InitType : Swift.String {
+  case InitDev
+  case InitDevByIP
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum CodeType : Swift.Int {
+  case Success = 200
+  case ParseQRCodeFail = 201
+  case ConnectCloudTimeOut = 202
+  case FindDevFail = 203
+  case ConnectAPFail = 204
+  case BindByMe = 205
+  case BingByOther = 206
+  case InputScError = 207
+  case BoxExisted = 208
+  case BoxOffline = 209
+  case OtherCode = 500
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class DHAddDeviceLogModel : ObjectiveC.NSObject {
+  @objc public var inputData: Swift.String
+  @objc public var did: Swift.String
+  @objc final public let time: Swift.String
+  @objc public var res: Swift.String
+  @objc public var errCode: Swift.Int
+  @objc public var dese: Swift.String
+  @objc public var type: Swift.String
+  @objc public var method: Swift.String
+  @objc public var deviceInfo: LCAddDeviceModule.DHDeviceInfoLogModel
+  @objc final public let resFail: Swift.String
+  @objc final public let initDev: Swift.String
+  @objc final public let initDevByIP: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol DHOfflineWifiConfigProtocol : LCBaseModule.DHServiceProtocol {
+  @objc func updateDeviceInfo(deviceId: Swift.String, byPassword devicePassword: Swift.String)
+  @objc func savePasswordInCache(deviceId: Swift.String, password: Swift.String)
+  @objc func backToMainController()
+}
+@objc public protocol DHOMSConfigManagerProtocol : LCBaseModule.DHServiceProtocol {
+  @objc func clearOMSCache()
+  @objc func cacheFolderPath() -> Swift.String
+  @objc func checkUpdateIntrodution(byMarketModel model: Swift.String)
+  @objc func checkUpdateDeviceModels()
+  @objc func preloadIntroductions()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class DHAutoKeyboardView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var isFullScreen: Swift.Bool
+  @_Concurrency.MainActor(unsafe) weak public var relatedView: UIKit.UIView?
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+}
+@objc public class DHIntroductionParser : ObjectiveC.NSObject {
+  required public init(introduction: LCNetworkModule.DHOMSIntroductionInfo)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DHAppWifiCell : UIKit.UITableViewCell {
+  @_Concurrency.MainActor(unsafe) public func setup(wifiInfo: LCAddDeviceModule.DHApWifiInfo)
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class LCAddDeviceModule : ObjectiveC.NSObject, LCBaseModule.DHModuleProtocol {
+  @_Concurrency.MainActor(unsafe) @objc public func moduleInit()
+  @_Concurrency.MainActor(unsafe) @objc public func moduleCustomEvent(_ eventname: Swift.String!, userInfo: [Swift.AnyHashable : Any]! = [:])
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol DHCycleTimerViewDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func cycleTimerViewTimeout(cycleView: LCAddDeviceModule.DHCycleTimerView)
+  @objc func cycleTimerView(cycleView: LCAddDeviceModule.DHCycleTimerView, tick: Swift.Int)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class DHCycleTimerView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: LCAddDeviceModule.DHCycleTimerViewDelegate?
+  @objc @_Concurrency.MainActor(unsafe) public var timeout: (() -> ())?
+  @objc @_Concurrency.MainActor(unsafe) public var progressWidth: CoreGraphics.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var progressBackgroundColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var progressForegroundColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var maxTime: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var currentTime: Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor(unsafe) public func startTimer()
+  @objc @_Concurrency.MainActor(unsafe) public func stopTimer()
+  @objc @_Concurrency.MainActor(unsafe) public func pauseTimer()
+  @objc @_Concurrency.MainActor(unsafe) public func resumeTimer()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class DHAddDeviceLogManager : ObjectiveC.NSObject {
+  @objc public static let shareInstance: LCAddDeviceModule.DHAddDeviceLogManager
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension LCAddDeviceModule.DHAddDeviceLogManager {
+  @objc dynamic public func addDeviceStartLog(model: LCAddDeviceModule.DHAddDeviceLogModel)
+  @objc dynamic public func addDeviceEndLog(model: LCAddDeviceModule.DHAddDeviceLogModel)
+  @objc dynamic public func addDeviceNetSDKLog(model: LCAddDeviceModule.DHAddDeviceLogModel)
+  @objc dynamic public func addDeviceInitLog(model: LCAddDeviceModule.DHAddDeviceLogModel)
+}
+extension LCAddDeviceModule.DHNetConfigMode : Swift.Equatable {}
+extension LCAddDeviceModule.DHNetConfigMode : Swift.Hashable {}
+extension LCAddDeviceModule.DHNetConfigMode : Swift.RawRepresentable {}
+extension LCAddDeviceModule.DHNetConfigStrategy : Swift.Equatable {}
+extension LCAddDeviceModule.DHNetConfigStrategy : Swift.Hashable {}
+extension LCAddDeviceModule.DHNetConfigStrategy : Swift.RawRepresentable {}
+extension LCAddDeviceModule.DHDeviceAccessType : Swift.Equatable {}
+extension LCAddDeviceModule.DHDeviceAccessType : Swift.Hashable {}
+extension LCAddDeviceModule.DHDeviceAccessType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.DHNetConnectType : Swift.Equatable {}
+extension LCAddDeviceModule.DHNetConnectType : Swift.Hashable {}
+extension LCAddDeviceModule.DHNetConnectType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.StartAddType : Swift.Equatable {}
+extension LCAddDeviceModule.StartAddType : Swift.Hashable {}
+extension LCAddDeviceModule.StartAddType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.ResType : Swift.Equatable {}
+extension LCAddDeviceModule.ResType : Swift.Hashable {}
+extension LCAddDeviceModule.ResType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.DescType : Swift.Equatable {}
+extension LCAddDeviceModule.DescType : Swift.Hashable {}
+extension LCAddDeviceModule.DescType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.InitType : Swift.Equatable {}
+extension LCAddDeviceModule.InitType : Swift.Hashable {}
+extension LCAddDeviceModule.InitType : Swift.RawRepresentable {}
+extension LCAddDeviceModule.CodeType : Swift.Equatable {}
+extension LCAddDeviceModule.CodeType : Swift.Hashable {}
+extension LCAddDeviceModule.CodeType : Swift.RawRepresentable {}

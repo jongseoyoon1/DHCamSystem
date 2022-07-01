@@ -1,0 +1,6 @@
+framework module Pods_DHCamSystem {
+  umbrella header "Pods-DHCamSystem-umbrella.h"
+
+  export *
+  module * { export * }
+}

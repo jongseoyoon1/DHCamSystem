@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DHRegistDevicePopupViewController" customModule="DHCamSystem" customModuleProvider="target">
+            <connections>
+                <outlet property="manualDeviceButton" destination="f8t-wy-4xn" id="ryb-Gk-BWz"/>
+                <outlet property="popupView" destination="wpQ-xy-Y1m" id="USP-u2-oha"/>
+                <outlet property="qrCodeButton" destination="kzo-Ju-0C2" id="5GW-sP-NCu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTe-Ao-fZ7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpQ-xy-Y1m">
+                            <rect key="frame" x="35" y="323.66666666666669" width="305" height="165"/>
+                            <subviews>
+                                <button opaque="NO" tag="2100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzo-Ju-0C2">
+                                    <rect key="frame" x="0.0" y="0.0" width="305" height="82"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="tintColor" red="0.29810097810000002" green="0.3019908369" blue="0.30194139479999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="QR 코드 스캔 추가"/>
+                                    <connections>
+                                        <action selector="deviceRegSelectAction:" destination="-1" eventType="touchUpInside" id="hhG-mF-Frh"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PP8-wX-5YR">
+                                    <rect key="frame" x="0.0" y="82" width="305" height="1"/>
+                                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="3oh-au-oas"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" tag="2101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8t-wy-4xn">
+                                    <rect key="frame" x="0.0" y="83" width="305" height="82"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="tintColor" red="0.29810097810000002" green="0.3019908369" blue="0.30194139479999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="수동 디바이스 추가"/>
+                                    <connections>
+                                        <action selector="deviceRegSelectAction:" destination="-1" eventType="touchUpInside" id="seh-a8-5Uw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="f8t-wy-4xn" firstAttribute="top" secondItem="PP8-wX-5YR" secondAttribute="bottom" id="4mF-Iu-I86"/>
+                                <constraint firstAttribute="trailing" secondItem="PP8-wX-5YR" secondAttribute="trailing" id="7bL-SQ-hsZ"/>
+                                <constraint firstAttribute="trailing" secondItem="f8t-wy-4xn" secondAttribute="trailing" id="CtN-GL-5oN"/>
+                                <constraint firstAttribute="trailing" secondItem="kzo-Ju-0C2" secondAttribute="trailing" id="DJU-FE-MLP"/>
+                                <constraint firstItem="PP8-wX-5YR" firstAttribute="centerX" secondItem="wpQ-xy-Y1m" secondAttribute="centerX" id="GE2-pC-uMu"/>
+                                <constraint firstItem="kzo-Ju-0C2" firstAttribute="leading" secondItem="wpQ-xy-Y1m" secondAttribute="leading" id="H4B-A6-WNU"/>
+                                <constraint firstItem="kzo-Ju-0C2" firstAttribute="bottom" secondItem="PP8-wX-5YR" secondAttribute="top" id="Kct-8T-yfo"/>
+                                <constraint firstAttribute="bottom" secondItem="f8t-wy-4xn" secondAttribute="bottom" id="Peo-Mp-pdO"/>
+                                <constraint firstItem="PP8-wX-5YR" firstAttribute="centerY" secondItem="wpQ-xy-Y1m" secondAttribute="centerY" id="XXE-vv-T8B"/>
+                                <constraint firstItem="PP8-wX-5YR" firstAttribute="leading" secondItem="wpQ-xy-Y1m" secondAttribute="leading" id="fXV-vH-Bf2"/>
+                                <constraint firstAttribute="height" constant="165" id="iiM-LR-4K0"/>
+                                <constraint firstItem="kzo-Ju-0C2" firstAttribute="top" secondItem="wpQ-xy-Y1m" secondAttribute="top" id="jf5-lA-t6b"/>
+                                <constraint firstItem="f8t-wy-4xn" firstAttribute="leading" secondItem="wpQ-xy-Y1m" secondAttribute="leading" id="kQc-Vs-GK6"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.29998289233576642" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="wpQ-xy-Y1m" firstAttribute="leading" secondItem="TTe-Ao-fZ7" secondAttribute="leading" constant="35" id="4aa-EF-Vip"/>
+                        <constraint firstItem="wpQ-xy-Y1m" firstAttribute="centerX" secondItem="TTe-Ao-fZ7" secondAttribute="centerX" id="6RM-TR-JyH"/>
+                        <constraint firstAttribute="trailing" secondItem="wpQ-xy-Y1m" secondAttribute="trailing" constant="35" id="JWT-iS-Waw"/>
+                        <constraint firstItem="wpQ-xy-Y1m" firstAttribute="centerY" secondItem="TTe-Ao-fZ7" secondAttribute="centerY" id="YuG-5D-hHM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="TTe-Ao-fZ7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="77D-Cf-C0y"/>
+                <constraint firstItem="TTe-Ao-fZ7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LsU-FG-q3J"/>
+                <constraint firstAttribute="trailing" secondItem="TTe-Ao-fZ7" secondAttribute="trailing" id="eub-uU-jJl"/>
+                <constraint firstAttribute="bottom" secondItem="TTe-Ao-fZ7" secondAttribute="bottom" id="nxo-GG-uHb"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="153"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
